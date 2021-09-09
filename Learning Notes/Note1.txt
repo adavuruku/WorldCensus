@@ -1,0 +1,64 @@
+Set Up:
+ 1. install composer
+ 2. https://getcomposer.org/download/
+
+Creating the project:
+    a. using composer
+        composer create-project laravel/laravel <project-name>
+        e.g composer create-project laravel/laravel worldcensus
+
+        php artisan serve
+    b. using laravel installer
+        //intall laravel globally
+        composer global require laravel/installer
+
+        //Create a project
+        laravel new example-app
+
+        cd example-app
+
+        php artisan serve
+
+    c add db config to env files
+
+    d. create controllers
+
+    e Routes
+        1.API routes is for running restful apis
+
+        Routes defined in the routes/api.php file are nested within a route group by the RouteServiceProvider. Within this group, the /api URI prefix is automatically applied so you do not need to manually apply it to every route in the file. You may modify the prefix and other route group options by modifying your RouteServiceProvider class.
+
+        in app/Providers/RouteServiceProvider line 41
+
+        2. web routes is for runinign view routes (rendering web pages) These routes are assigned the web middleware group, which provides features like session state and CSRF protection.
+
+        #BASIC
+        Route::get('/greeting', function () {
+            return 'Hello World';
+        });
+
+        //specify multiple http methods
+        Route::match(['get', 'post'], '/', function () {
+            //
+        });
+
+        //all htmmp method using any
+        Route::any('/', function () {
+            //
+        });
+
+        use Illuminate\Http\Request; -> use this to inject Request class, this called type hint in laravel
+
+        Route::get('/users', function (Request $request) {
+            // ...
+        });
+
+        #redirect
+        Route::redirect('/incoming url', '/redirect url', optional code);
+
+        Route::permanentRedirect('/incoming url', '/redirect url');
+
+        #view route
+        Route::view('/route link', 'view page', optional parameters);
+
+        Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
