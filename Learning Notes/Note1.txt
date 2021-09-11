@@ -62,3 +62,15 @@ Creating the project:
         Route::view('/route link', 'view page', optional parameters);
 
         Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+        models
+
+        php artisan make:Model Models\<model name>
+        php artisan make:Model Controller\<model name>
+
+
+        php artisan cache:clear
+php artisan route:cache
+php artisan config:clear
+php artisan view:clear
+rm -rf bootstrap/cache/*/*
